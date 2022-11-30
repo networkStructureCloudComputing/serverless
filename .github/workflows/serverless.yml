@@ -47,3 +47,7 @@ jobs:
       - name: Copy Artifact to S3
         run: |
           aws s3 cp ${{ env.ARTIFACT_NAME }} s3://${{ secrets.LAMBDA_BUCKET }}/${{ env.ARTIFACT_NAME }}
+
+      - name: Call to Lambda for Updating Function
+        run: |
+          aws lambda update-function-code --function-name lambda_called_from_sns --region us-east-1 --zip-file fileb://${{ env.ARTIFACT_NAME }}

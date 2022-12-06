@@ -52,7 +52,7 @@ exports.handler = (event, context, callback) => {
 
 var sendEmail = (data) => {
 
-    let link = `http://${data.domainName}/v1/verifyUserEmail?email=${data.username}&token=${data.token}`;
+    let link = `https://${data.domainName}/v1/verifyUserEmail?email=${data.username}&token=${data.token}`;
     let body = `<html><body>Hi ${data.first_name},<br> Your profile has been created successfully on our application. You need to verify your email address before using your account by clicking on this link: <br><br><a href=${link}>Verify your account</a><br><br><br> Kind Regards,<br> <strong>${data.domainName}<strong></body></html>`
     let from = "noreply@" + data.domainName
     let emailBody = {
